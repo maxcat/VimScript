@@ -26,6 +26,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'violetyk/cake.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,10 +49,14 @@ nnoremap tt :TagbarToggle<CR>
 nnoremap nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Grep Map
+nnoremap <leader>f :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
 " PHP Auto Completion
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-set tags=/Users/li.tan/project/NINServerLab/php.tags;
+let g:cakephp_enable_fix_mode = 1
+let g:cakephp_app ="~/project/NINServerLab/app/"
+"autocmd BufWritePost *.php execute  "tag"
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -86,6 +91,7 @@ set noshowmatch
 " By default, only Type/Method signatures are fetched. Full documentation can still be fetched when
 " you need it with the :OmniSharpDocumentation command.
 " let g:omnicomplete_fetch_documentation=1
+set completeopt-=preview
 
 "Move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
 "You might also want to look at the echodoc plugin
