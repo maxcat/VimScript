@@ -40,6 +40,12 @@ if has('gui_running')
 else
 	set background=dark
 endif
+colorscheme solarized
+
+" 4 space tab
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 set ic
 set hlsearch
@@ -50,7 +56,7 @@ nnoremap nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Grep Map
-nnoremap <leader>f :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+nnoremap <leader>f :silent execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
 
 " PHP Auto Completion
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -62,8 +68,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1 
-let g:syntastic_auto_loc_list = 1 
+"let g:syntastic_always_populate_loc_list = 1 
+"let g:syntastic_auto_loc_list = 1 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
